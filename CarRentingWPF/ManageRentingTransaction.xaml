@@ -1,0 +1,48 @@
+﻿<Window x:Class="CarRentingWPF.ManageRentingTransition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarRentingWPF"
+        mc:Ignorable="d"
+        Title="ManageRentingTransaction" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Label Width="230" FontSize="25" Height="70">Renting Transaction</Label>
+        </StackPanel>
+        <StackPanel>
+            <ListView Name="lvRenting" Width="auto" Height="160" Margin="0,50,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="RentingTransactionID" Width="120" DisplayMemberBinding="{Binding Path=RentingTransationId}"/>
+                        <GridViewColumn Header="RentingDate" Width="200" DisplayMemberBinding="{Binding Path=RentingDate}"/>
+                        <GridViewColumn Header="TotalPrice" Width="150" DisplayMemberBinding="{Binding Path=TotalPrice}"/>
+                        <GridViewColumn Header="CustomerID" Width="150" DisplayMemberBinding="{Binding Customer.CustomerId}"/>
+                        <GridViewColumn Header="RentingStatus" Width="180" DisplayMemberBinding="{Binding Path=RentingStatus}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="180" FontSize="25" Height="45" Margin="0,210,0,0">Renting Details</Label>
+        </StackPanel>
+        <StackPanel>
+            <ListView Name="lvRentingDetail" Width="auto" Height="170" Margin="0,260,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="RentingTransactionID" Width="120" DisplayMemberBinding="{Binding Path=RentingTransactionId}"/>
+                        <GridViewColumn Header="CarID" Width="200" DisplayMemberBinding="{Binding Path=CarId}"/>
+                        <GridViewColumn Header="StartDate" Width="150" DisplayMemberBinding="{Binding Path=StartDate}"/>
+                        <GridViewColumn Header="EndDate" Width="150" DisplayMemberBinding="{Binding Path=EndDate}"/>
+                        <GridViewColumn Header="Price" Width="180" DisplayMemberBinding="{Binding Path=Price}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <Button x:Name="btnClose"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"             
+                Content="Back"
+                FontSize="18" Width="120" Height="30"
+                Click="btnBack_Click"/>
+    </Grid>
+</Window>

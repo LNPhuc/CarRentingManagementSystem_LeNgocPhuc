@@ -1,0 +1,28 @@
+﻿<Window x:Class="CarRentingWPF.CarRentingHistory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarRentingWPF"
+        mc:Ignorable="d"
+        Title="CarRentingHistory" Height="450" Width="800">
+    <Grid>
+        <ListView Name="lvRentingTransaction" Width="auto" Height="Auto" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="RentingTransationId" Width="120" DisplayMemberBinding="{Binding RentingTransationId}"/>
+                    <GridViewColumn Header="CustomerId" Width="120" DisplayMemberBinding="{Binding CustomerId}"/>
+                    <GridViewColumn Header="RentingDate" Width="150" DisplayMemberBinding="{Binding RentingDate}"/>
+                    <GridViewColumn Header="TotalPrice" Width="140" DisplayMemberBinding="{Binding TotalPrice}"/>
+                    <GridViewColumn Header="RentingStatus" Width="120" DisplayMemberBinding="{Binding RentingStatus}"/>
+                    <GridViewColumn Header="Car Id" Width="150" DisplayMemberBinding="{Binding RentingDetail.CarId}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnClose"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"             
+                Content="Back"
+                FontSize="18" Width="120" Height="30"
+                Click="btnBack_Click"/>
+    </Grid>
+</Window>

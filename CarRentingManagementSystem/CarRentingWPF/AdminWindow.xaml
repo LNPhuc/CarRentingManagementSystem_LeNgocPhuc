@@ -1,0 +1,17 @@
+﻿<Window x:Class="CarRentingWPF.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarRentingWPF"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Admin Manage Window" HorizontalAlignment="Center" Margin="0,67,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Button Content="Customer Information" HorizontalAlignment="Left" Margin="118,187,0,0" VerticalAlignment="Top" Height="57" Width="158" Click="btnCus_Infor"/>
+        <Button Content="Car Information" HorizontalAlignment="Left" Margin="503,184,0,0" VerticalAlignment="Top" Height="57" Width="158" Click="btnCar_Infor"/>
+        <Button Content="Renting Transaction" HorizontalAlignment="Left" Margin="118,303,0,0" VerticalAlignment="Top" Height="57" Width="158" Click="btnRenting_Trans"/>
+        <Button Content="Report Statistic" HorizontalAlignment="Left" Margin="503,298,0,0" VerticalAlignment="Top" Height="57" Width="158" Click="btnReport"/>
+
+    </Grid>
+</Window>
