@@ -40,7 +40,13 @@ namespace Respository.Implement
             return car;
         }
 
-        public CarInformation UpdateCar(CarInformation carInformation)
+		public List<CarInformation> GetCarInformationTop3()
+		{
+            var random = new Random();
+			return _context.Set<CarInformation>().OrderBy(c => Guid.NewGuid()).Take(3).ToList();
+		}
+
+		public CarInformation UpdateCar(CarInformation carInformation)
         {
             var car = _context.Set<CarInformation>().FirstOrDefault(c => c.CarId == carInformation.CarId);
             if(car.CarName == carInformation.CarName &&

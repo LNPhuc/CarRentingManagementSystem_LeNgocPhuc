@@ -55,7 +55,7 @@ namespace CarRentingWPF
                 cusnew.Password = txtPassword.Text;
                 cusnew.CustomerBirthday = DateTime.Parse(txtBirthday.Text);
                 cusnew.CustomerStatus = byte.Parse(txtStatus.Text);
-                _customerService.UpdateProfile(cusnew);
+                _customerService.UpdateProfile(cusnew.CustomerId, cusnew);
                 MessageBox.Show("Update Successfully!");
             }
             catch (Exception ex)

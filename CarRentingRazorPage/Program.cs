@@ -18,6 +18,13 @@ builder.Services.AddRazorPages();
 string connString = builder.Configuration.GetConnectionString("FUCarRentingManagementDB");
 builder.Services.AddDbContext<FUCarRentingManagementContext>(options => { options.UseSqlServer(connString); });
 
+//ADD SESSION
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 builder.Services.AddTransient<IUnitofWork, UnitofWork>();
 builder.Services.AddTransient<IAccountService, AccountService>();
@@ -43,7 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();   
 app.UseAuthorization();
 
 app.MapRazorPages();

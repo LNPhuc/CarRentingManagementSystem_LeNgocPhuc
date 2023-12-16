@@ -12,5 +12,6 @@ namespace Infrastructure.IService
         IEnumerable<RentingTransaction> GetRentingHistory(int customerId);
         List<RentingTransaction> GetAllRentingTransaction();
         List<RentingDetail> GetAllRentingDetail();
+        List<RentingDetail> GetRentingDetailsById(int id);
     }
 }

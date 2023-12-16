@@ -11,7 +11,7 @@ namespace Respository.Respository.Interface
     {
         List<Customer> GetCustomer();
         Customer GetById(int id);
-        Customer UpdateProfile(Customer customer);
+        Customer UpdateProfile(int id,Customer customer);
         void DeleteCustomer(int id);
     }
 }

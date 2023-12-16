@@ -65,7 +65,7 @@ namespace CarRentingWPF
             cusnew.Password = txtPassword.Text;
             cusnew.CustomerBirthday = DateTime.Parse(txtBirthday.Text);
             cusnew.CustomerStatus = byte.Parse(txtCustomerStatus.Text);
-            var cusUpdate = _customerService.UpdateProfile(cusnew);
+            var cusUpdate = _customerService.UpdateProfile(cusnew.CustomerId, cusnew);
             if (cusUpdate != null) MessageBox.Show("Update Successfully!");
             else MessageBox.Show("Nothing Change!");
             LoadCustomer();

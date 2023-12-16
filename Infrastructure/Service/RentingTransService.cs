@@ -15,7 +15,7 @@ namespace Infrastructure.Service
 
         public RentingTransService(IUnitofWork unitOfWork)
         {
-            _unitOfWork = new UnitofWork(new FUCarRentingManagementContext());
+            _unitOfWork = unitOfWork;
         }
 
         public List<RentingDetail> GetAllRentingDetail()
@@ -26,6 +26,11 @@ namespace Infrastructure.Service
         public List<RentingTransaction> GetAllRentingTransaction()
         {
             return _unitOfWork.Transation.GetAllTransaction();
+        }
+
+        public List<RentingDetail> GetRentingDetailsById(int id)
+        {
+            return _unitOfWork.Transation.GetRentingDetailsById(id);
         }
 
         public IEnumerable<RentingTransaction> GetRentingHistory(int customerId)

@@ -13,5 +13,6 @@ namespace Services.IService
         CarInformation GetCarInformationByCarId(int carId);
         CarInformation UpdateCarInformation(CarInformation carInformation);
         void AddNewCar(CarInformation carInformation);
-    }
+		List<CarInformation> GetCarInformationTop3();
+	}
 }

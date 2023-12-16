@@ -7,29 +7,30 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BussinessObject.Entity;
+using Infrastructure.Service.IService;
 
 namespace CarRentingRazorPage.Pages.Admin.ManageCustomer
 {
     public class EditModel : PageModel
     {
-        private readonly BussinessObject.Entity.FUCarRentingManagementContext _context;
+        private readonly ICustomerService _customerService;
 
-        public EditModel(BussinessObject.Entity.FUCarRentingManagementContext context)
+        public EditModel(ICustomerService customerService)
         {
-            _context = context;
+            _customerService = customerService;
         }
 
         [BindProperty]
         public Customer Customer { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int id)
         {
-            if (id == null || _context.Customers == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var customer =  await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer =  _customerService.GetCustomerById(id);
             if (customer == null)
             {
                 return NotFound();
@@ -40,37 +41,32 @@ namespace CarRentingRazorPage.Pages.Admin.ManageCustomer
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Attach(Customer).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CustomerExists(Customer.CustomerId))
+                if (Customer.CustomerStatus == 0)
                 {
-                    return NotFound();
+                    ViewData["Message"] = "User is already banned!";
                 }
                 else
                 {
-                    throw;
+                    _customerService.DeleteCustomer(Customer.CustomerId);
+                    ViewData["Message"] = "Ban user successfully!";
+
                 }
+                
+            }
+            catch (Exception ex)
+            {
+                ViewData["Message"] = ex.Message.ToString();
+                
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Edit");
         }
 
-        private bool CustomerExists(int id)
-        {
-          return (_context.Customers?.Any(e => e.CustomerId == id)).GetValueOrDefault();
-        }
+        
     }
 }

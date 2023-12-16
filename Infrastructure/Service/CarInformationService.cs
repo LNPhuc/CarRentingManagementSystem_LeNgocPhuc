@@ -13,9 +13,9 @@ namespace Services.Service
     {
         private readonly IUnitofWork _unitOfWork;
 
-        public CarInformationService()
+        public CarInformationService(IUnitofWork unitofWork)
         {
-            _unitOfWork = new UnitofWork(new FUCarRentingManagementContext());
+            _unitOfWork = unitofWork;
         }
 
         public void AddNewCar(CarInformation carInformation)
@@ -36,7 +36,12 @@ namespace Services.Service
             return car;
         }
 
-        public CarInformation UpdateCarInformation(CarInformation carInformation)
+		public List<CarInformation> GetCarInformationTop3()
+		{
+			return _unitOfWork.CarInformation.GetCarInformationTop3();
+		}
+
+		public CarInformation UpdateCarInformation(CarInformation carInformation)
         {
             var car = _unitOfWork.CarInformation.UpdateCar(carInformation);
             _unitOfWork.Save();

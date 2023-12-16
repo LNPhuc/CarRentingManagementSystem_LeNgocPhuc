@@ -12,5 +12,6 @@ namespace Respository.Interface
         IEnumerable<RentingTransaction> GetTransactionsHistory(int customerId);
         List<RentingTransaction> GetAllTransaction();
         List<RentingDetail> GetAllTransationDetail();
+        List<RentingDetail> GetRentingDetailsById(int id);
     }
 }

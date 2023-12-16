@@ -47,26 +47,23 @@ namespace Respository.Respository.Implement
 
         
 
-        public Customer UpdateProfile(Customer customer)
+        public Customer UpdateProfile(int id, Customer customer)
         {
-            var cus = _context.Set<Customer>().FirstOrDefault(c => c.CustomerId == customer.CustomerId);
+            var cus = _context.Set<Customer>().FirstOrDefault(c => c.CustomerId == id);
             if (cus.CustomerName == customer.CustomerName &&
-            cus.Password == customer.Password &&
+
             cus.Email == customer.Email &&
-            cus.Telephone == customer.Telephone &&
-            cus.CustomerBirthday == customer.CustomerBirthday &&
-            cus.CustomerStatus == customer.CustomerStatus)
+            cus.Telephone == customer.Telephone)
             {
                 return null;
             }
             else
             {
                 cus.CustomerName = customer.CustomerName;
-                cus.Password = customer.Password;
-                cus.Email = customer.Email;
+
+                
                 cus.Telephone = customer.Telephone;
-                cus.CustomerBirthday = customer.CustomerBirthday;
-                cus.CustomerStatus = customer.CustomerStatus;
+
                 return cus;
             }          
         }

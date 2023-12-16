@@ -8,9 +8,9 @@ namespace Infrastructure.Service
     {
         private readonly IUnitofWork _unitOfWork;
 
-        public CustomerService()
+        public CustomerService(IUnitofWork unitofWork)
         {
-            _unitOfWork = new UnitofWork(new FUCarRentingManagementContext());
+            _unitOfWork = unitofWork;
         }
         public List<Customer> GetCustomer()
         {
@@ -29,9 +29,9 @@ namespace Infrastructure.Service
             return customer;
         }
 
-        public Customer UpdateProfile(Customer customer)
+        public Customer UpdateProfile(int id, Customer customer)
         {
-            var cus = _unitOfWork.Customer.UpdateProfile(customer);
+            var cus = _unitOfWork.Customer.UpdateProfile(id,customer);
             _unitOfWork.Save();
             return cus;
         }

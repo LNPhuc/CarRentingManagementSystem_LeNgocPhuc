@@ -11,7 +11,8 @@ namespace Infrastructure.Service.IService
     {
         List<Customer> GetCustomer();
         Customer GetCustomerById(int id);
-        Customer UpdateProfile(Customer customer);
+        Customer UpdateProfile(int id,Customer customer);
+         
         void DeleteCustomer(int cusId);
     }
 }

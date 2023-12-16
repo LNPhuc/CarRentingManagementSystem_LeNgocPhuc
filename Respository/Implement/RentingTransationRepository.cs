@@ -30,6 +30,16 @@ namespace Respository.Implement
             return lsTrans;
         }
 
+        public List<RentingDetail> GetRentingDetailsById(int id)
+        {
+            var lstrans = _context.Set<RentingDetail>().Include(c => c.Car)
+                                    .Include(c => c.Car.Manufacturer)
+                                    .Include(c => c.Car.Supplier)
+                                    .Where(c => c.RentingTransactionId == id)
+                                    .ToList();
+            return lstrans;
+        }
+
         public IEnumerable<RentingTransaction> GetTransactionsHistory(int customerId)
         {
             var lsTrans = _context.Set<RentingTransaction>().Include(c => c.Customer).Include(c => c.RentingDetails).Where(c => c.CustomerId == customerId).ToList();

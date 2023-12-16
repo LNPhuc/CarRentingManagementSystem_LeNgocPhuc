@@ -13,9 +13,9 @@ namespace Infrastructure.Service
     {
         private readonly IUnitofWork _unitOfWork;
 
-        public AccountService()
+        public AccountService(IUnitofWork unitofWork)
         {
-            _unitOfWork = new UnitofWork(new FUCarRentingManagementContext());
+            _unitOfWork = unitofWork;
         }
 
         public bool GetAdminAccount(string email, string password)

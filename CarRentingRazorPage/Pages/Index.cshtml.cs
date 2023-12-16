@@ -32,7 +32,11 @@ namespace CarRentingRazorPage.Pages
                 ViewData["notification"] = "Tài khoản không tồn tại";
                 return Page();
             }
-            return Page();
+            else
+            {
+                HttpContext.Session.SetString("CustomerID", account.CustomerId.ToString());
+                return RedirectToPage("/HomePage");
+            }
         }
     }
 }
